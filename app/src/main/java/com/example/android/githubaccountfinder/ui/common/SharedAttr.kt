@@ -1,4 +1,4 @@
-package com.example.android.githubaccountfinder.ui.component
+package com.example.android.githubaccountfinder.ui.common
 
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.ExperimentalMaterial3Api

@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class GitHubUserDetail(
     @SerializedName("login")
-    var login: String? = null,
+    var login: String,
     @SerializedName("id")
     var id: Int,
     @SerializedName("avatar_url")
-    var avatarUrl: String? = null,
+    var avatarUrl: String,
     @SerializedName("url")
-    var url: String? = null,
+    var url: String,
     @SerializedName("html_url")
-    var htmlUrl: String? = null,
+    var htmlUrl: String,
     @SerializedName("name")
     var name: String? = null,
     @SerializedName("company")
@@ -36,7 +36,7 @@ data class GitHubUserDetail(
     @SerializedName("following")
     var following: Int,
     @SerializedName("created_at")
-    var createdAt: String? = null,
+    var createdAt: String,
     @SerializedName("updated_at")
-    var updatedAt: String? = null,
+    var updatedAt: String,
 )

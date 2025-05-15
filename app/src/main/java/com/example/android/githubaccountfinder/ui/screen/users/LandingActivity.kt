@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.android.githubaccountfinder.data.model.GitHubUser
 import com.example.android.githubaccountfinder.ui.screen.users.detail.UserDetailScreen
+import com.example.android.githubaccountfinder.ui.screen.users.detail.UserDetailViewModel
 import com.example.android.githubaccountfinder.ui.screen.users.list.UserListScreen
 import com.example.android.githubaccountfinder.ui.screen.users.list.UserListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,8 @@ class LandingActivity : AppCompatActivity() {
                 }
                 composable<GitHubUser> { backStackEntry ->
                     val user: GitHubUser = backStackEntry.toRoute()
-                    UserDetailScreen(user) {
+                    val viewModel: UserDetailViewModel = hiltViewModel(backStackEntry)
+                    UserDetailScreen(user, viewModel) {
                         navController.popBackStack("landingScreen", false)
                     }
                 }

@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GitHubUser(
     @SerializedName("login")
-    var login: String? = null,
+    var login: String,
     @SerializedName("id")
     var id: Int,
     @SerializedName("avatar_url")

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GitHub Account Finder</string>
+    <string name="label_followers">Followers</string>
+    <string name="label_following">Following</string>
+    <string name="label_stars">Stars</string>
+    <string name="label_try_again">Try Again</string>
+    <string name="something_went_wrong_please_try_again_later">Something went wrong.\nPlease try again later.</string>
 </resources>

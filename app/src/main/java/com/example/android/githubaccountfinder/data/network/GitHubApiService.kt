@@ -1,5 +1,6 @@
 package com.example.android.githubaccountfinder.data.network
 
+import com.example.android.githubaccountfinder.data.model.GitHubRepository
 import com.example.android.githubaccountfinder.data.model.GitHubUser
 import com.example.android.githubaccountfinder.data.model.GitHubUserDetail
 import com.example.android.githubaccountfinder.data.model.SearchUsersResponse
@@ -14,10 +15,17 @@ interface GitHubApiService {
         @Query("since") since: Int
     ): List<GitHubUser>
 
-    @GET("users/{id}")
+    @GET("user/{id}")
     suspend fun getUser(
-        @Path("id") id: String,
+        @Path("id") id: Int,
     ): GitHubUserDetail
+
+    @GET("users/{username}/repos")
+    suspend fun getRepos(
+        @Path("username") username: String,
+        @Query("per_page") perPage: Int,
+        @Query("page") page: Int
+    ): List<GitHubRepository>
 
     @GET("search/users")
     suspend fun searchUsers(

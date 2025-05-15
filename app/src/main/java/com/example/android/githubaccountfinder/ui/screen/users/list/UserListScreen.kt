@@ -50,9 +50,8 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.android.githubaccountfinder.R
 import com.example.android.githubaccountfinder.data.model.GitHubUser
-import com.example.android.githubaccountfinder.ui.component.SharedAttr
-import com.example.android.githubaccountfinder.ui.component.SharedUI
-import com.example.android.githubaccountfinder.ui.component.SharedUI.ShimmerUserRow
+import com.example.android.githubaccountfinder.ui.common.SharedAttr
+import com.example.android.githubaccountfinder.ui.common.SharedUI
 
 @Composable
 fun UserListScreen(
@@ -90,7 +89,7 @@ fun UserListScreen(
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = user.login ?: "-",
+                        text = user.login,
                         style = MaterialTheme.typography.bodyLarge,
                     )
                     Text(
@@ -160,7 +159,7 @@ fun UserListScreen(
                         contentPadding = PaddingValues(12.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
-                        items(8) { ShimmerUserRow() }
+                        items(8) { UserListItem.ShimmerUserRow() }
                     }
                 } else {
                     LazyColumn(
@@ -177,7 +176,7 @@ fun UserListScreen(
                         }
                         if (lazyUsersPagingItem.loadState.append is LoadState.Loading) {
                             item {
-                                ShimmerUserRow()
+                                UserListItem.ShimmerUserRow()
                             }
                         }
                     }
