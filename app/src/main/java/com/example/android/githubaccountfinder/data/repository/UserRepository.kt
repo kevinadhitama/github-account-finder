@@ -18,7 +18,7 @@ class UserRepository @Inject constructor(private val apiService: GitHubApiServic
         return apiService.getUser(id)
     }
 
-    fun getReposByUserName(username: String): Pager<Int, GitHubRepository> {
+    fun getReposByUserName(username: String, includeForkedRepo: Boolean = false): Pager<Int, GitHubRepository> {
         return Pager(
             config = PagingConfig(
                 pageSize = pageSize,
@@ -28,7 +28,8 @@ class UserRepository @Inject constructor(private val apiService: GitHubApiServic
                 GetReposSource(
                     apiService = apiService,
                     username = username,
-                    pageSize = pageSize
+                    pageSize = pageSize,
+                    includeForkedRepo = includeForkedRepo
                 )
             }
         )

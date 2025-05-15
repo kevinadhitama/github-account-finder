@@ -9,12 +9,18 @@ class GetReposSource(
     private val apiService: GitHubApiService,
     private val username: String,
     private val pageSize: Int,
+    private val includeForkedRepo: Boolean,
 ) : PagingSource<Int, GitHubRepository>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GitHubRepository> {
         val page = params.key ?: 1
         return try {
-            val repos = apiService.getRepos(username, pageSize, page)
+            var repos = apiService.getRepos(username, pageSize, page)
+            if (includeForkedRepo.not()) {
+                repos = repos.filter {
+                    !it.fork
+                }
+            }
 
             LoadResult.Page(
                 data = repos,
